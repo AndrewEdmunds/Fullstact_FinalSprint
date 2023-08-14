@@ -27,10 +27,13 @@ app.use(flash());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Set up routes
+const authRoutes = require('./routes/auth');
 const indexRoutes = require('./routes/index');
-const searchRoutes = require('./routes/search'); // Add this line
-app.use('/', indexRoutes);
-app.use('/search', searchRoutes); // Add this line
+const searchRoutes = require('./routes/search');
+
+app.use('/', indexRoutes); // Landing page
+app.use('/auth', authRoutes); // Authentication
+app.use('/search', searchRoutes); // Search functionality
 
 // Start the server
 const PORT = process.env.PORT || 3000;
