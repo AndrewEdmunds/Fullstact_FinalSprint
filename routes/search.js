@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
     const query = req.query.query;
 
     const recipes = await db.query(
-      'SELECT * FROM recipes WHERE title ILIKE $1 OR ingredients ILIKE $2', // Include other columns as needed
+      'SELECT * FROM recipes WHERE title ILIKE $1 OR ingredients ILIKE $2',
       [`%${query}%`, `%${query}%`]
     );
 

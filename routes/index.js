@@ -1,9 +1,18 @@
 const express = require('express');
 const router = express.Router();
 
-// Landing page
+
+// root page (signup)
 router.get('/', (req, res) => {
-  res.render('signup');
+  res.render('signup', { errorMessage: req.flash('error'), successMessage: req.flash('success'), currentUser: res.locals.currentUser });
+});
+// main page
+router.get('/landing', (req, res) => {
+  res.render('landing', {currentUser: res.locals.currentUser})
+});
+// Logout page
+router.get('/logout', (req, res) => {
+  res.render('logout');
 });
 
 module.exports = router;

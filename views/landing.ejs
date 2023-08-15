@@ -6,19 +6,32 @@
     <title>Recipe Search Engine</title>
 </head>
 <body>
-    <h1>Welcome to the Recipe Search Engine</h1>
-    <form action="/search" method="GET">
-        <input type="text" name="query" placeholder="Search for recipes">
-        <button type="submit">Search</button>
-    </form>
-    <p>current options (testing purposes only):
-        1. Beef Stir Fry
-        2. Chocolate Chip Cookies
-        3. Caesar Salad
-        4. Chicken Alfredo
-        5. Spaghetti Bolognese
-        6. Blueberry Pancakes
-    </p>
+    <nav>
+        <% if (currentUser) { %>
+            <p>Welcome, <%= currentUser %>!</p>
+            <a href="/auth/logout">Logout</a>
+        <% } else { %>
+            <a href="/auth/signup">Sign Up</a>
+            <a href="/auth/login">Log In</a>
+        <% } %>
+    </nav>
+    <% if (currentUser) { %>
+        <h1>Welcome to the Recipe Search Engine</h1>
+        <form action="/search" method="GET">
+            <input type="text" name="query" placeholder="Search for recipes">
+            <button type="submit">Search</button>
+        </form>
+        <p>current options (testing purposes only):
+            1. Beef Stir Fry
+            2. Chocolate Chip Cookies
+            3. Caesar Salad
+            4. Chicken Alfredo
+            5. Spaghetti Bolognese
+            6. Blueberry Pancakes
+        </p>
+    <% } else { %>
+        <p>Please <a href="/auth/login">Log In</a></p>
+    <% } %>
 </body>
 </html>
 
