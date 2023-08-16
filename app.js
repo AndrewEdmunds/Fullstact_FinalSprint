@@ -4,16 +4,13 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const flash = require('connect-flash');
-const pool = require('./models/db'); // Import the PostgreSQL pool
+const pool = require('./models/db');
+const authMiddleware = require('./authMiddleware');
 
-// Set up view engine
+
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
-
-// Middleware for parsing request bodies
 app.use(bodyParser.urlencoded({ extended: false }));
-
-// Set up sessions and flash messages
 app.use(
   session({
     secret: 'secret-key',
@@ -22,15 +19,22 @@ app.use(
   })
 );
 app.use(flash());
-
-// Serve static files from the 'public' directory
+app.use(authMiddleware);
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Set up routes
+const authRoutes = require('./routes/auth');
 const indexRoutes = require('./routes/index');
-const searchRoutes = require('./routes/search'); // Add this line
-app.use('/', indexRoutes);
-app.use('/search', searchRoutes); // Add this line
+const searchRoutes = require('./routes/search');
+
+app.use('/', indexRoutes); // Landing page
+app.use('/auth', authRoutes); // Authentication
+app.use('/search', searchRoutes); // Search functionality
+
+app.use(flash());
+
+app.use('/', indexRoutes); // Landing page
+app.use('/auth', authRoutes); // Authentication
+app.use('/search', searchRoutes); // Search functionality
 
 // Start the server
 const PORT = process.env.PORT || 3000;
