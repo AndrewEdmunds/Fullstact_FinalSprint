@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recipe Search Engine</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <nav>
@@ -26,14 +27,21 @@
             </select>
             <button type="submit">Search</button>
         </form>
-        <p>current options (testing purposes only):
-            1. Beef Stir Fry
-            2. Chocolate Chip Cookies
-            3. Caesar Salad
-            4. Chicken Alfredo
-            5. Spaghetti Bolognese
-            6. Blueberry Pancakes
+        <p>current options POSTGRE (testing purposes only): <br>
+            1. Beef Stir Fry<br>
+            2. Chocolate Chip Cookies<br>
+            3. Caesar Salad<br>
+            4. Chicken Alfredo<br>
+            5. Spaghetti Bolognese<br>
+            6. Blueberry Pancakes<br>
         </p>
+        <p>current options MONGO (testing purposes only): <br>
+            1. BBQ Ribs<br>
+            2. Peanut Butter Brownies<br>
+            3. Strawberry Shortcake<br>
+            4. Raspberry Cheesecake<br>
+            5. Beef Tacos<br>
+            6. Caesar Salad<br></p>
     <% } else { %>
         <p>Please <a href="/auth/login">Log In</a></p>
     <% } %>

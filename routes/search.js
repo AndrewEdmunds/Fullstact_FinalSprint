@@ -21,8 +21,15 @@ router.get('/', async (req, res) => {
 
     if (database === 'mongo' || database === 'both') {
       await mongodb.connectToDatabase();
-      const mongoRecipes = await mongodb.searchRecipes(query);
+
+      const client = mongodb.getClient(); // Get the MongoDB client from mongodb.js
+      const db = client.db('cooking_and_baking');
+      const collection = db.collection('recipes');
+      
+      const mongoRecipes = await collection.find({ $text: { $search: query } }).toArray();
       recipes.push(...mongoRecipes);
+
+      await client.close(); // Close the MongoDB connection
     }
 
     res.render('search_results', { recipes });
@@ -33,6 +40,7 @@ router.get('/', async (req, res) => {
 });
 
 module.exports = router;
+
 
 
 
