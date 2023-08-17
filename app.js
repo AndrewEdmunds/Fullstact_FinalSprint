@@ -4,7 +4,6 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const flash = require('connect-flash');
-const pool = require('./models/db');
 const authMiddleware = require('./authMiddleware');
 
 
@@ -26,15 +25,15 @@ const authRoutes = require('./routes/auth');
 const indexRoutes = require('./routes/index');
 const searchRoutes = require('./routes/search');
 
-app.use('/', indexRoutes); // Landing page
-app.use('/auth', authRoutes); // Authentication
-app.use('/search', searchRoutes); // Search functionality
+app.use('/', indexRoutes);
+app.use('/auth', authRoutes);
+app.use('/search', searchRoutes);
 
 app.use(flash());
 
-app.use('/', indexRoutes); // Landing page
-app.use('/auth', authRoutes); // Authentication
-app.use('/search', searchRoutes); // Search functionality
+app.use('/', indexRoutes);
+app.use('/auth', authRoutes);
+app.use('/search', searchRoutes); 
 
 // Start the server
 const PORT = process.env.PORT || 3000;

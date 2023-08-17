@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../models/db');
-const bcrypt = require('bcrypt'); // Import bcrypt for password hashing
+const bcrypt = require('bcrypt'); // used bcrypt for password hashing
 const flash = require('connect-flash');
 
 // Signup page
@@ -75,6 +75,7 @@ router.post('/login', async (req, res) => {
   }
 });
 
+// logout page
 router.get('/logout', (req, res) => {
   req.session.destroy(err => {
     if (err) {

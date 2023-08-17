@@ -4,48 +4,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recipe Search Engine</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/landing.css">
 </head>
 <body>
-    <nav>
-        <% if (currentUser) { %>
-            <p>Welcome, <%= currentUser %>!</p>
-            <a href="/auth/logout">Logout</a>
-        <% } else { %>
-            <a href="/auth/signup">Sign Up</a>
-            <a href="/auth/login">Log In</a>
-        <% } %>
+    <nav class="nav-container">
+        <div class="nav-content">
+            <% if (currentUser) { %>
+                <p class="welcome-message">Welcome, <%= currentUser %>!</p>
+                <a href="/auth/logout" class="signout-button">Sign Out</a>
+            <% } else { %>
+                <p id="loginNeeded">Please <a href="/auth/login">Log In</a></p>
+            <% } %>
+        </div>
     </nav>
-    <% if (currentUser) { %>
-        <h1>Welcome to the Recipe Search Engine</h1>
-        <form action="/search" method="GET">
-            <input type="text" name="query" placeholder="Search for recipes">
-            <select name="database">
-                <option value="mongo">MongoDB</option>
-                <option value="postgre">PostgreSQL</option>
-                <option value="both">Both</option>
-            </select>
-            <button type="submit">Search</button>
-        </form>
-        <p>current options POSTGRE (testing purposes only): <br>
-            1. Beef Stir Fry<br>
-            2. Chocolate Chip Cookies<br>
-            3. Caesar Salad<br>
-            4. Chicken Alfredo<br>
-            5. Spaghetti Bolognese<br>
-            6. Blueberry Pancakes<br>
-        </p>
-        <p>current options MONGO (testing purposes only): <br>
-            1. BBQ Ribs<br>
-            2. Peanut Butter Brownies<br>
-            3. Strawberry Shortcake<br>
-            4. Raspberry Cheesecake<br>
-            5. Beef Tacos<br>
-            6. Caesar Salad<br></p>
-    <% } else { %>
-        <p>Please <a href="/auth/login">Log In</a></p>
-    <% } %>
+    <main class="container">
+        <div class="container">
+            <% if (currentUser) { %>
+                <h1 class="main-title">Welcome to the Recipe Search Engine</h1>
+                <form action="/search" method="GET" class="search-form">
+                    <input type="text" name="query" placeholder="Search for recipes" class="search-input">
+                    <select name="database" class="search-select">
+                        <option value="mongo">MongoDB</option>
+                        <option value="postgre">PostgreSQL</option>
+                        <option value="both">Both</option>
+                    </select>
+                    <button type="submit" class="search-button">Search</button>
+                </form>
+            <% } else { %>
+            <% } %>
+        </div>
+        <% if (currentUser) { %>
+            <div class="options">
+                <div class="options-list">
+                    <p>current options POSTGRE (testing purposes only): <br>
+                        <span class="recipe-option">1. Beef Stir Fry</span><br>
+                        <span class="recipe-option">2. Chocolate Chip Cookies</span><br>
+                        <span class="recipe-option">3. Caesar Salad</span><br>
+                        <span class="recipe-option">4. Chicken Alfredo</span><br>
+                        <span class="recipe-option">5. Spaghetti Bolognese</span><br>
+                        <span class="recipe-option">6. Blueberry Pancakes</span><br>
+                    </p>
+                </div>
+                <div class="options-list">
+                    <p>current options MONGO (testing purposes only): <br>
+                        <span class="recipe-option">1. BBQ Ribs</span><br>
+                        <span class="recipe-option">2. Peanut Butter Brownies</span><br>
+                        <span class="recipe-option">3. Strawberry Shortcake</span><br>
+                        <span class="recipe-option">4. Raspberry Cheesecake</span><br>
+                        <span class="recipe-option">5. Beef Tacos</span><br>
+                        <span class="recipe-option">6. Caesar Salad</span><br>
+                    </p>
+                </div>
+            </div>
+        <% } %>
+    </main>
 </body>
 </html>
+
+
+
 
 

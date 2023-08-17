@@ -10,6 +10,7 @@ router.get('/', async (req, res) => {
     const database = req.query.database;
 
     let recipes = [];
+    let selectedDatabase = database;
 
     if (database === 'postgre' || database === 'both') {
       const pgRecipes = await db.query(
@@ -22,17 +23,17 @@ router.get('/', async (req, res) => {
     if (database === 'mongo' || database === 'both') {
       await mongodb.connectToDatabase();
 
-      const client = mongodb.getClient(); // Get the MongoDB client from mongodb.js
+      const client = mongodb.getClient();
       const db = client.db('cooking_and_baking');
       const collection = db.collection('recipes');
       
-      const mongoRecipes = await collection.find({ $text: { $search: query } }).toArray();
+      const mongoRecipes = await collection.find({ $text: { $search: `"${query}"` } }).toArray();
       recipes.push(...mongoRecipes);
 
-      await client.close(); // Close the MongoDB connection
+      await client.close();
     }
 
-    res.render('search_results', { recipes });
+    res.render('search_results', { recipes, selectedDatabase });
   } catch (err) {
     console.error('Error executing search query:', err);
     res.send('An error occurred while searching.');

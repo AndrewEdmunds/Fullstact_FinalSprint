@@ -18,6 +18,6 @@ function getClient() {
 
 module.exports = {
   connectToDatabase,
-  getClient, // Add this line to export the getClient function
+  getClient,
 };
 
