@@ -1,5 +1,6 @@
 const { MongoClient } = require('mongodb');
 
+// This simply connects to the mongo database
 const url = 'mongodb://127.0.0.1:27017/cooking_and_baking';
 const client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: true });
 
