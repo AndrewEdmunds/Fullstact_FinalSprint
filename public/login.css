@@ -6,9 +6,9 @@ body, h1, p, ul, li, form {
 body {
     font-family: Arial, sans-serif;
     background-color: #f2f2f2;
+    min-height: 100vh; 
 }
 
-/* Navigation bar */
 nav {
     background-color: #333;
     color: white;
@@ -24,7 +24,6 @@ nav a {
     margin-left: 10px;
 }
 
-/* Log In page */
 .login-container {
     text-align: center;
     background-color: white;
@@ -79,12 +78,20 @@ nav a {
     margin-top: 10px;
 }
 
-/* Error and success messages */
 .error-message,
 .success-message {
     margin-top: 10px;
     padding: 10px;
     border-radius: 4px;
+}
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    width: 100%; 
+    position: fixed; 
+    bottom: 0; 
 }
 
 

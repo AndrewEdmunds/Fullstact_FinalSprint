@@ -6,9 +6,11 @@ body, h1, p, ul, li, form {
 body {
     font-family: Arial, sans-serif;
     background-color: #f2f2f2;
+    display: flex;
+    flex-direction: column; 
+    min-height: 100vh;
 }
 
-/* Navigation bar */
 nav {
     background-color: #333;
     color: white;
@@ -33,7 +35,6 @@ nav {
     margin-left: 10px;
 }
 
-/* Search Results page */
 .search-title {
     text-align: center;
     margin-top: 20px;
@@ -76,7 +77,9 @@ footer {
     color: white;
     text-align: center;
     padding: 10px;
+    margin-top: auto;
 }
+
 
 
 
