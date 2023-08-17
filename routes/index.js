@@ -10,9 +10,5 @@ router.get('/', (req, res) => {
 router.get('/landing', (req, res) => {
   res.render('landing', {currentUser: res.locals.currentUser})
 });
-// Logout page
-router.get('/logout', (req, res) => {
-  res.render('logout');
-});
 
 module.exports = router;
